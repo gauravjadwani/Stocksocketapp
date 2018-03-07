@@ -3,7 +3,7 @@ import {BootstrapTable, TableHeaderColumn,SearchField } from 'react-bootstrap-ta
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-class Rtable extends Component {
+class Landingpage extends Component {
   constructor(props){
     super(props);
      this.state = {
@@ -13,49 +13,60 @@ class Rtable extends Component {
    }
   componentWillMount=()=>{
     var _this=this;
-fetch('https://cl7ry4y706.execute-api.ap-south-1.amazonaws.com/api/ledger')
- .then(function(response) {
-   if (response.status >= 400) {
-     throw new Error("Bad response from server");
-   }
-   return response.json();
- })
- .then(function(data) {
-   _this.setState({ dataList :data });
- });
+    var socket= new WebSocket('ws://stocks.mnet.website');
+      console.log(socket);
+    socket.onopen= function() {
+      socket.send('hello');
+    };
+    socket.onmessage= function(s) {
+      // console.log(s.data);
+      var d=JSON.parse(s.data);
+      console.log(d);
+var holder=[];
+      for(var i=0;i<d.length;i++){
+            var c=[];
+        for(var j in d[i]){
+          c[d[i][0]]=d[i][1];
+        }
+        holder.push(c);
+}
+console.log(holder,'holder');
+       _this.setState({ dataList :holder });
+    };
 }
 render() {
 const style = {
-    height: 10020,
-    width: 900,
+    height: 500,
+    width: 500,
     margin: 20,
     textAlign: 'center',
     display: 'inline-block',
   };
     return (
       <div className="row">
-        <div className="col-md-1">
+        <div className="">
         </div>
-        <div className="col-md-10">
+        <div className="">
           <MuiThemeProvider>
           <Paper style={style} zDepth={5} children={
             <BootstrapTable data={this.state.dataList} version='4' search>
-        <TableHeaderColumn isKey dataField='LEDGER_ID'>LEDGER_ID</TableHeaderColumn>
-         <TableHeaderColumn dataField='CLIENT_ID'>CLIENT_ID</TableHeaderColumn>
-          <TableHeaderColumn dataField='SEGMENT'>SEGMENT</TableHeaderColumn>
-            <TableHeaderColumn dataField='VOUCHER_DATE'>VOUCHER_DATE</TableHeaderColumn>
-               <TableHeaderColumn dataField='VOUCHER_NUMBER'>VOUCHER_NUMBER</TableHeaderColumn>
-                  <TableHeaderColumn dataField='NARRATION'>NARRATION</TableHeaderColumn>
-                     <TableHeaderColumn dataField='AMOUNT'>AMOUNT</TableHeaderColumn>
-                        <TableHeaderColumn dataField='PRODUCT'>PRODUCT</TableHeaderColumn>
+        <TableHeaderColumn isKey dataField='lnkd'>lnkd</TableHeaderColumn>
+         <TableHeaderColumn dataField='evi'>evi</TableHeaderColumn>
+          <TableHeaderColumn dataField='msft'>msft</TableHeaderColumn>
+            <TableHeaderColumn dataField='goog'>goog</TableHeaderColumn>
+               <TableHeaderColumn dataField='intc'>intc</TableHeaderColumn>
+                  <TableHeaderColumn dataField='shld'>shld</TableHeaderColumn>
+                     <TableHeaderColumn dataField='aapl'>aapl</TableHeaderColumn>
+                        <TableHeaderColumn dataField='ebr'>ebr</TableHeaderColumn>
+                    <TableHeaderColumn dataField='yhoo'>yhoo</TableHeaderColumn>
      </BootstrapTable>}/>
      </MuiThemeProvider>
         </div>
-        <div className="col-md-1">
+        <div className="">
         </div>
       </div>
     );
   }
 }
 
-export default Rtable;
+export default Landingpage;
