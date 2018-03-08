@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Landingpage from './components/Landingpage.js';
-import Chart from './components/text.js';
-import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+// import Header from './components/common/Header.js';
 
 class App extends Component {
+  constructor (props) {
+         super(props);
+       }
   render() {
+      console.log('App');
     return (
-      <div className="App">
-      <Landingpage/>
-      </div>
+      <div>
+     {this.props.children}
+   </div>
     );
   }
 }
-
 export default App;
