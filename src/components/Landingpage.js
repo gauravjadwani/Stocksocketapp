@@ -3,12 +3,12 @@ import {BootstrapTable, TableHeaderColumn,SearchField } from 'react-bootstrap-ta
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {BarChart} from 'react-easy-chart';
 class Landingpage extends Component {
   constructor(props){
     super(props);
      this.state = {
-      isloading:true,
-      dataList: [],
+      dataList: []
      };
    }
   componentWillMount=()=>{
@@ -24,14 +24,16 @@ class Landingpage extends Component {
       console.log(d);
 var holder=[];
       for(var i=0;i<d.length;i++){
-            var c=[];
+            var c={};
         for(var j in d[i]){
-          c[d[i][0]]=d[i][1];
+          c['x']=d[i][0];
+          c['y']=d[i][1];
         }
         holder.push(c);
 }
 console.log(holder,'holder');
        _this.setState({ dataList :holder });
+    console.log(_this.state.dataList,'name');
     };
 }
 render() {
@@ -49,17 +51,9 @@ const style = {
         <div className="">
           <MuiThemeProvider>
           <Paper style={style} zDepth={5} children={
-            <BootstrapTable data={this.state.dataList} version='4' search>
-        <TableHeaderColumn isKey dataField='lnkd'>lnkd</TableHeaderColumn>
-         <TableHeaderColumn dataField='evi'>evi</TableHeaderColumn>
-          <TableHeaderColumn dataField='msft'>msft</TableHeaderColumn>
-            <TableHeaderColumn dataField='goog'>goog</TableHeaderColumn>
-               <TableHeaderColumn dataField='intc'>intc</TableHeaderColumn>
-                  <TableHeaderColumn dataField='shld'>shld</TableHeaderColumn>
-                     <TableHeaderColumn dataField='aapl'>aapl</TableHeaderColumn>
-                        <TableHeaderColumn dataField='ebr'>ebr</TableHeaderColumn>
-                    <TableHeaderColumn dataField='yhoo'>yhoo</TableHeaderColumn>
-     </BootstrapTable>}/>
+            <BarChart colorBars  height={250}
+    width={500}  axisLabels={{x: 'My x Axis', y: 'My y Axis'}}
+    axes data={this.state.dataList}/>}/>
      </MuiThemeProvider>
         </div>
         <div className="">

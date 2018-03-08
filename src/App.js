@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Landingpage from './components/Landingpage.js';
+import Chart from './components/text.js';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class App extends Component {

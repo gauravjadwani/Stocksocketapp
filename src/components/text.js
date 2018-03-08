@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
+// import {BarChart,ResponsiveBar} from 'react-bar-chart';
+import {BarChart} from 'react-easy-chart';
 class MyComponent extends React.Component {
 
-    constructor() {
 
-        super();
-
-        this.handleLoginKeyUp = this.keyUpHandler.bind(this);
-    }
-
-    keyUpHandler(e) {
-        console.log(e.target.value,this);
-        e.target.value=e.target.value.toLocaleUpperCase();
-    }
 
     render() {
 
         return (
             <div>
-                <input type="text" onKeyUp={this.handleLoginKeyUp}/>
+                <BarChart
+   data={[
+     {x: 'A', y: 20},
+     {x: 'B', y: 30},
+     {x: 'C', y: 40},
+     {x: 'D', y: 20},
+     {x: 'E', y: 40},
+     {x: 'F', y: 25},
+     {x: 'G', y: 5}
+   ]}
+ />
             </div>
         );
     }
