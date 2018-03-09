@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Header from './components/common/Header.js';
+import LandingScreen from './components/LandingScreen.js';
 import './components/css/index.css';
 class App extends Component {
   constructor (props) {
@@ -10,7 +10,8 @@ class App extends Component {
       console.log('App');
     return (
       <div className="container">
-     {this.props.children}
+     // {this.props.children} just to show landing screen
+     <LandingScreen/>
    </div>
     );
   }
