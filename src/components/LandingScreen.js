@@ -3,7 +3,6 @@ import {BootstrapTable, TableHeaderColumn,SearchField } from 'react-bootstrap-ta
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import {BarChart} from 'react-easy-chart';
 import Table from './Table';
 import Chart from './Chart';
 class LandingScreen extends Component {

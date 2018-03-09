@@ -11,7 +11,6 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {applyMiddleware} from 'redux';
 const store = configureStore(applyMiddleware(thunk));
-// const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 ReactDOM.render(
     <Provider store={store}>
   <Router history={browserHistory} routes={routes}/>

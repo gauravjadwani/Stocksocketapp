@@ -9,13 +9,4 @@ export default function configureStore(initialState) {
     initialState,
     applyMiddleware(thunk)
   );
- //  return createStore(
- //   rootReducer,
- //   compose(
- //     applyMiddleware(thunk)
- //   ),initialState
- // )
 }
- // export default compose(applyMiddleware(thunk))(createStore)(rootReducer);
-// export default compose(applyMiddleware(thunk))(createStore)(rootReducer);
-// export default configureStore = () => compose(applyMiddleware(thunk))(createStore)(rootReducer);
