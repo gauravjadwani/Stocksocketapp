@@ -42,20 +42,26 @@ export const WEB_SOCKETS = (value) => {
 //     }
   }
   function a(message,dispatch){
-    // console.log(message,'coming');
+    console.log(message,'coming');
     var holder=[];
+    var holdertable=[];
         var d = JSON.parse(message);
         console.log(d,'dd',d.length);
         for (var i = 0; i < d.length; i++) {
           var c = {};
+          var t={}
           for (var j in d[i]) {
             c['x'] = d[i][0];
             c['y'] = d[i][1];
+            t['name']=d[i][0];
+            t['price']=d[i][1];
           }
           holder.push(c);
+          holdertable.push(t);
+
         }
         console.log(JSON.stringify(holder),'holder');
-    dispatch({type: 'WEB_SOCKETS', payload:holder});
+    dispatch({type: 'WEB_SOCKETS', payload:[holder,holdertable]});
 
   }
   // }

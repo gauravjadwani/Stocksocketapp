@@ -8,12 +8,13 @@ class Chart extends React.Component {
     super(props);
     console.log('landing props', props);
   }
-    componentWillMount = () => {
-  this.props.WEB_SOCKETS();
+  componentWillMount = () => {
+this.props.WEB_SOCKETS();
 }
 render() {
+  console.log(this.props.dataList[0],'chart.js');
     return (
-            <BarChart colorBars data={this.props.dataList} height={250} width={500}  axisLabels={{x: 'My x Axis', y: 'My y Axis'}}/>
+            <BarChart axes colorBars data={this.props.dataList[0]} height={250} width={500}  axisLabels={{x: 'My x Axis', y: 'My y Axis'}}/>
         );
     }
 }

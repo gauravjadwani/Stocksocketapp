@@ -1,8 +1,8 @@
 let INITIAL_STATE={
-dataList:[]
+dataList:[[],[]]
 }
 export default (state=INITIAL_STATE,action) => {
-  console.log(action,'inside main reducer');
+  console.log(action,'inside main reducer',action.payload);
   switch(action.type){
           case 'WEB_SOCKETS':
             return {...state,
@@ -12,4 +12,3 @@ export default (state=INITIAL_STATE,action) => {
         return state;
   }
 }
-  
